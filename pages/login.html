@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/pages/login.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="nav-primary-item">
+          <li class="nav-primary-item">
+            <div class="container-header">
+              <img src="https://static.wixstatic.com/media/924126_5f1bb95cd3db48f7a9f55feade3cd4fc~mv2.png/v1/crop/x_0,y_43,w_500,h_414/fill/w_268,h_222,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/a863-removebg-preview.png"
+                alt="logotipo">
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="container__main">
+        <div class="container__apresentation">
+          <h2>Bem Vindo</h2>
+          <h2>É um prazer ver você novamente</h2>
+        </div>
+        <div class="login">
+          <form action="" method="post" id="login-form">
+            <div class="container__login">
+              <label for="email">Email:</label>
+              <input type="text" id="email" placeholder="Digite aqui seu email" required/>
+            </div>
+            <div class="container__login">
+              <label for="password">Senha: </label>
+              <input type="password" id="password" placeholder="Digite aqui sua senha" required/>
+            </div>
+            <div class="container__button-login">
+              <button type="submit" value="Login" id="btn-login">Acessar</button>
+            </div>
+          </form>
+        </div>
+        <div class="button-options">
+          <button type="button" id="recoveryAccountBtn">Esqueci a senha</button>
+          <button type="button" id="createAccountBtn">Criar nova conta</button>
+        </div>
+      </section>
+      <section class="container__recovery" style="display: none;">
+        <div class="container__apresentation">
+        <h2>Esqueceu a senha ?</h2>
+        <h2>Não tem problema, vamos la</h2>
+        </div>
+        <div class="recovery">
+          <form action="">
+            <div class="container__login">
+              <label for="email">Email</label>
+              <input type="text" name="email" id="recEmail" placeholder="Insira seu e-mail">
+            </div>
+            <div class="container__button-recovery">
+              <input type="submit" name="recuperarSenha" id="recSenha" value="Recuperar Senha">
+            </div>
+          </form>
+        </div>
+        <button type="button" id="backToLoginBtn2">Voltar ao Login</button>
+      </section>
+      <section class="container__signup" style="display: none;">
+        <h2>Bem Vindo</h2>
+        <h2>Vamos Criar uma nova conta</h2>
+        <div class="signup">
+          <form>
+              <div class="container__login">
+                <label for="name">Nome:</label>
+                <input type="text" placeholder="Digite seu Nome" required>
+              </div>
+              <div class="container__login">
+                <label for="email">Email:</label>
+                <input type="email" placeholder="Digite seu Email" required>
+              </div>
+              <div class="container__login">
+                <label for="password">Senha</label>
+                <input type="password" placeholder="Digite sua Senha" required>
+              </div>
+              <div class="container__button-login">
+                <input type="submit" value="Cadastrar"></input>
+              </div>
+          </form>
+        </div>
+        <button type="button" id="backToLoginBtn">Voltar ao Login</button>
+      </section>
+    </main>
+    <footer>
+      <div class="container-footer">
+        <p>Codigo Certo</p>
+        <p>Construindo o amanhã, hoje.</p>
+      </div>
+    </footer>
+    <script src="../assets/js/login-button-interation.js"></script>
+    <script src="../assets/js/login-post.js"></script>
+  </body>
+</html>
