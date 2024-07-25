@@ -58,6 +58,12 @@
 .access__login a> button:hover{
   scale: 1.2;
 }
+
+.container-content{
+  box-sizing: border-box;
+  justify-content: center;
+  height: 100vh;
+}
 /* Fim da parte de acesso */
 
 @media screen and (min-width: 930px){
