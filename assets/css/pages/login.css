@@ -1,0 +1,94 @@
+@import url(../style.css);
+
+*{
+  box-sizing: border-box;
+  font-family: "Robot",sans-serif;
+}
+
+.container__apresentation{
+  display: flex;
+  flex-direction: column;
+}
+.container__main,
+.container__login,
+.container__signup,
+.container__recovery{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 1rem;
+}
+
+.login,
+.signup,
+.recovery{
+  border: 1px solid black;
+  padding: 1rem;
+}
+.container__button-login, .container__button-recovery{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container__login > input{
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+input[type=submit],
+button {
+  padding: 0.5rem;
+  border-radius: 1.2rem;
+  border: transparent;
+  font-weight: 800;
+  margin: 1rem;
+  background-color: #e53939;
+}
+input[type=submit]{
+  width: 70%;
+}
+
+
+input[type=submit]:hover,
+button:hover{
+  scale: 1.1;
+  color: white;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+a:active{
+  color: black;
+}
+
+.login-forget{
+  font-weight: 700;
+}
+.login-forget:hover{
+  scale: 1.1;
+}
+
+
+@media screen and (min-width: 613px){
+  .button-options{
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 713px){
+  .button-options{
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 1050px){
+  .button-options{
+    display: flex;
+    flex-direction: column;
+  }
+}

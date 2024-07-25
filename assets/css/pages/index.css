@@ -1,0 +1,68 @@
+/* importando as configurações do cabelhaço */
+@import url(../style.css);
+
+/* Parte de gerenciamento */
+.container-content,.container-access{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.container-content > img, .container-access > img{
+  width: 300px;
+  height: 300px;
+  padding: 1%;
+  margin: 1% 0;
+}
+
+.content_title{
+  width: 300px;
+  text-align: center;
+}
+.content_title > h2,.access__login > h2{
+  font-weight: 800;
+  text-shadow: 2px 3px 8px rgba(0,0,0,0.35);
+}
+.content_title > p{
+  margin: 1rem;
+  font-weight: 400;
+  font-size: 1rem;
+}
+/* Fim da Parte de gerenciamento */
+
+/* Parte de acesso */
+
+.container-access{
+  background-color: #e53939;
+}
+
+.access__login{
+  display: flex;
+  flex-direction: column;
+}
+.access__login > h2{
+  color: white;
+}
+.access__login a > button{
+  padding: 10px;
+  margin: 1rem;
+  border-radius: 20px;
+  border: transparent;
+  font-weight: 800;
+  width: 100%;
+  margin: 10% 0;
+}
+.access__login a> button:hover{
+  scale: 1.2;
+}
+/* Fim da parte de acesso */
+
+@media screen and (min-width: 930px){
+  .container-content > img, .container-access > img{
+    width: 30vw;
+    height: 40vh;
+  }
+}
