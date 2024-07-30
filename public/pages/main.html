@@ -3,9 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/pages/main.css" />
+    <link rel="stylesheet" href="../assets/css/pages/modal.css" />
     <title>Gerenciador de projetos</title>
+    <style>
+      #dateProject{
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -24,61 +29,99 @@
             </div>
           </li>
           <li class="nav-primary-item">
-            <label for="name" class="nav-name-profile"
-              >Vinicius Nascimento</label
-            >
-          </li>
-          <li class="nav-primary-item">
-            <button class="nav-btn-profile">
-              <img src="../assets/img/icon/avatar.png" alt="avatar img" />
-            </button>
+            <label for="name" id="nav-name-profile">
+              <!-- Aqui vai carregar via JS o nome da Pessoa logada no sistema. -->
+            </label>
           </li>
         </ul>
       </nav>
     </header>
     <main>
       <section id="filter-project">
-        <nav>
-          <ul class="nav-secundary-item">
-            <li class="nav-secundary-item">
-              <button class="button-with-icon">
-                <img
-                  class="img-nav-secundary"
-                  src="../assets/img/icon/menu.png"
-                  alt="Delete-project"
-                />
-              </button>
-            </li>
-            <li class="nav-secundary-item">
-              <button class="button-with-icon">
-                <img
-                  class="img-nav-secundary"
-                  src="../assets/img/icon/delete.png"
-                  alt="Delete-project"
-                />
-              </button>
-            </li>
-            <li class="nav-secundary-item">
-              <button class="button-with-icon">
-                <img
-                  class="img-nav-secundary"
-                  src="../assets/img/icon/edit.png"
-                  alt="Delete-project"
-                />
-              </button>
-            </li>
-            <li class="nav-secundary-item">
-              <button class="button-with-icon">
-                <img
-                  class="img-nav-secundary"
-                  src="../assets/img/icon/add.png"
-                  alt="Delete-project"
-                />
-              </button>
-            </li>
-          </ul>
-        </nav>
+        <ul class="nav-secundary-item">
+          <li class="nav-secundary-item">
+            <span class="title">Gerenciador de Projetos</span>
+          </li>
+          <li class="nav-secundary-item">
+            <button class="button-with-icon" id="button-delete">
+              <img
+                class="img-nav-secundary"
+                src="../assets/img/icon/delete.png"
+                alt="Delete-project"
+              />
+            </button>
+          </li>
+          <li class="nav-secundary-item" id="button-adds">
+            <button class="button-with-icon" id="button-add">
+              <img
+                class="img-nav-secundary"
+                src="../assets/img/icon/add.png"
+                alt="add-project"
+              />
+            </button>
+          </li>
+        </ul>
       </section>
+      <section id="project__container">
+        <ul id="project__container-list">
+          <!-- Projetos vão carregar aqui via JS. -->
+          <!-- <li class="project__container-list-item" id="project1">
+            <div class="project__container-item">
+              <div class="project__header">
+                <div class="project__header-id">
+                  <input type="checkbox" name="project-checkbox" id="projectId" value="1"/>
+                  <button class="button-with-icon editBtn" id="btn-edit-project" value="1"></button>
+                </div>
+                <div class="project__header-info">
+                  <span id="header-content-title1">a</span>
+                  <span id="header-content-date1">b</span>
+                </div>
+              </div>
+              <div class="project__detail">
+                <textarea name="detail_project" id="project-detail1">
+                masomo
+                </textarea>
+              </div>
+            </div>
+          </li> -->
+        </ul>
+      </section>
+      <!-- Modal para criar novo projeto. -->
+      <section id="modal__new-project" class="modal">
+        <div class="modal-content">
+          <span class="close-modal">&times;</span>
+          <div class="modal-content-header modal-container">
+            <h2>Criando novo projeto</h2>
+            <div class="modal-content-title modal-container">
+              <label for="title">Titulo</label>
+              <input type="text" id="title-new-project"/>
+            </div>
+            <div class="modal-content-text modal-container">
+              <span>Descrição </span>
+              <textarea id="text-new-project">
+
+              </textarea>
+            </div>
+            <div class="btn-new-Project modal-container">
+              <button id="btn-add-new">Salvar Projeto</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div id="modal__edit-project" class="modal">
+
+      </div>
     </main>
+    <footer>
+      <div class="container-footer">
+        <p>Codigo Certo</p>
+        <p>Construindo o amanhã, hoje.</p>
+      </div>
+    </footer>
+    <script src="../assets/js/model/userApi.js"></script>
+    <script src="../assets/js/model/User.js"></script>
+    <script src="../assets/js/model/apiProject.js"></script>
+    <script src="../assets/js/pages/main.js"></script>
+    <script src="../assets/js/buttons/main-buttons.js"></script>
   </body>
 </html>
