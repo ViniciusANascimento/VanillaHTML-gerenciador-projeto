@@ -16,8 +16,8 @@ async function getInfoUser() {
   return infoUser;
 }
 
-function getInfoProject(id) {
-  apiProject.getInfoProject(id).then((response = []) => {
+function getInfoProject() {
+  apiProject.getInfoProject(getIdUser()).then((response = []) => {
     const projetosCarregados = response.map(loadProjects).join("");
     projetos.innerHTML += projetosCarregados;
   });
@@ -63,4 +63,4 @@ function loginValidate() {
 
 //Executar o carregamento das informações do usuario.
 getInfoUser();
-getInfoProject(getIdUser());
+getInfoProject();

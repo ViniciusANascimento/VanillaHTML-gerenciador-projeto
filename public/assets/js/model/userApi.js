@@ -64,12 +64,42 @@ userApi.getUser = async(id) =>{
   return await getDataUsers();
 }
 
+userApi.createNewUser = async(userName,password,email) =>{
+  const urlLogin = userApi.url + 'users'
+  //console.log(urlLogin)
+  async function postUser(userName,password,email){
+    try{
+      const response = await fetch(urlLogin,{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body:JSON.stringify({
+          username: userName,
+          password: password,
+          email: email,
+        }),
+      });
+      console.log(response)
+      return response;
+    }catch(err){
+      console.error(err)
+      console.log('Deu erro')
+    }
+  }
+  return await postUser(userName,password,email)
+}
 
-
-// userApi.getUser(1).then(data => {
-//   console.log(data)
-// })
-
-// userApi.getProject(1).then(data => {
-//   console.log(data)
-// })
+userApi.recoveryUser = async(email) =>{
+  const urlRecovery = userApi.url + `auth/${email}`
+  async function recovery (){
+    try{
+      const response = await fetch(urlRecovery);
+      const responseApi = await response.json();
+      return responseApi;
+    }catch(err){
+      console.error(err);
+    }
+  }
+  return await recovery()
+}

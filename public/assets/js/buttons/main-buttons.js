@@ -90,12 +90,12 @@ const item = document.getElementById("project__container-list");
 item.addEventListener("change", (e) => {
   if (e.target.checked) {
     console.log(`Projeto ${e.target.value} marcado`);
-    listProject.push(e.target.value);
+    listaEvento.push(e.target.value);
   } else {
     console.log(`Projeto ${e.target.value} desmarcado`);
-    const indexItem = listProject.findIndex((index) => index == e.target.value);
+    const indexItem = listaEvento.findIndex((index) => index == e.target.value);
     //Removo da lista somente o item que foi desmarcado.
-    listProject.splice(indexItem, 1);
+    listaEvento.splice(indexItem, 1);
   }
 });
 
