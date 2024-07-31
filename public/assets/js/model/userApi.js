@@ -1,8 +1,8 @@
 const userApi = {};
 
 //URL da API para realizar LOGIN.
-//const urlLogin = `https://trilhafullstackjr-jun15-production-04db.up.railway.app/auth/{login}`;
-userApi.url = `http://localhost:8080/`;
+userApi.url = `https://trilhafullstackjr-jun15-production-04db.up.railway.app/`;
+//userApi.url = `http://localhost:8080/`;
 
 userApi.efetuarLogin = async (email, password) => {
 

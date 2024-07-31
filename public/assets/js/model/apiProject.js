@@ -1,5 +1,6 @@
 const apiProject = {};
-apiProject.url = `http://localhost:8080/`;
+apiProject.url = `https://trilhafullstackjr-jun15-production-04db.up.railway.app/`;
+//apiProject.url = `http://localhost:8080/`;
 
 //carregar os projetos.
 apiProject.getInfoProject = async (idUser) => {
