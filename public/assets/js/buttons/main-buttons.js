@@ -37,7 +37,7 @@ document
 //modal edit projto
 function modalEditProject(title, date, description) {
   return `<div class="modal-content">
-          <span class="close-modal">&times;</span>
+          <span class="close-modal" id="close-edit-modal">&times;</span>
           <div class="modal-content-header modal-container">
             <h2>Editando projeto</h2>
             <div class="modal-content-title modal-container">
@@ -47,12 +47,12 @@ function modalEditProject(title, date, description) {
                 id="title-edit-project"
                 value=${title}
               />
-              <span id="date-edit-project">${date}</span>
+              <span id="date-edit-project" style="display: none;">${date}</span>
             </div>
             <div class="modal-content-text modal-container">
               <span>Descrição </span>
-              <textarea id="text-edit-project">
-                ${description}
+              <textarea id="text-edit-project" rows="5" cols="33">
+                ${description.trim()}
               </textarea>
             </div>
             <div class="btn-new-Project modal-container">
@@ -101,27 +101,24 @@ item.addEventListener("change", (e) => {
 
 //evento para quando clicar no botão de editar.
 item.addEventListener("click", (e) => {
-  // console.log(e.target.value)
-  // const s = e.target.dataset.value;
   const action = e.target.dataset.action;
-  //console.log(action)
+  //console.log(e.target)
   if (action === "editProject") {
-    // console.log(`finalmente sasas + ${s}`)
     console.log(`Editando projeto = ${e.target.value}`);
 
-    //carregar as informações do projeto selecionado.
+    //carregar as informações do projeto selecionado e o modal para edição.
     modalEdit(e.target.value);
 
-    //console.log(dataProject)
     //exibir o modal
     document.getElementById("modal__edit-project").style.display = "block";
 
 
-    //Apos carregar o modal, carrego os eventos de atualização das informações.
-
+   //Apos carregar o modal, carrego os eventos de atualização das informações.
     const newText = document.getElementById('text-edit-project')
     const newTitle = document.getElementById('title-edit-project')
-    const newDate = document.getElementById('date-edit-project')
+    const newDate = document.getElementById('date-edit-project').innerHTML
+
+    console.log(newDate)
 
     let novoTexto = newText.value;
     let novoTitulo = newTitle.value
@@ -133,26 +130,25 @@ item.addEventListener("click", (e) => {
     newTitle.addEventListener('input',() =>{
       novoTitulo = newTitle.value
     })
+    document.getElementById('close-edit-modal').addEventListener('click', () =>{
+      window.location.reload()
+
+    })
+
 
     const putBtn = document.getElementById("btn-put-project");
 
-    putBtn.addEventListener("click", async() => {
+    putBtn.addEventListener('click', async() => {
+        const idProject = e.target.value
+        try{
+          const response = await apiProject.putProject(idProject,1,novoTitulo,newDate,novoTexto)
+          alert("Alteração realizada.");
+          window.location.reload();
+        }catch(erro){
+          console.error(erro)
+        }
 
-      await putBtn.addEventListener('click', async() => {
-        const id  = getIdUser()
-        const idp = e.target.value
-
-        //const newInfo = dataProject();
-        await apiProject.putProject(
-          idp,
-          id,
-          novoTitulo,
-          newDate.innerHTML,
-          novoTexto
-        );
       });
-
-    });
 
 
   }
@@ -163,8 +159,6 @@ function modalEdit(idProject) {
   const editTitle = document.getElementById(
     `title-project${idProject}`
   ).innerHTML;
-
-  console.log(editTitle)
 
   const editData = document.getElementById(
     `date-project${idProject}`

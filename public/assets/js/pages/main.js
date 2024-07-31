@@ -1,7 +1,7 @@
 const projetos = document.getElementById("project__container-list");
+const params = new URLSearchParams(window.location.search);
 
 function getIdUser() {
-  const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   return id;
 }
@@ -12,7 +12,6 @@ function getIdUser() {
  */
 async function getInfoUser() {
   const infoUser = await userApi.getUser(getIdUser());
-  //console.log(infoUser)
   return infoUser;
 }
 
@@ -24,6 +23,8 @@ function getInfoProject() {
 }
 
 function loadProjects(projects) {
+  const date = projects.date;
+  const dateTrunc = date.substring(0,10)
   const listItem =
   `
           <li class="project__container-list-item">
@@ -39,28 +40,33 @@ function loadProjects(projects) {
                 </div>
               </div>
               <div class="project__detail">
-                <textarea name="detail_project" id="project-detail${projects.id}">
-                ${projects.descricao}
+                <textarea name="detail_project" id="project-detail${projects.id}" rows="5" cols="33" disabled>
+                ${projects.descricao.trim()}
                 </textarea>
               </div>
-                <span id="date-project${projects.id}">${projects.date}</span>
+              <div class="project__header-info-date">
+                <span class="date-project-trunc">${dateTrunc}</span>
+                <span id="date-project${projects.id}" style="display: none;">${projects.date}</span>
+              </div>
             </div>
           </li>`;
   return listItem;
 }
 
-function loginValidate() {
-  const user = userApi.getUser();
+async function loginValidate() {
+  const user = await getInfoUser();
   const validateLogin = params.get("validate");
-  const nomeOperador = document.getElementById("nav-name-profile");
-
-  if (!validateLogin) {
-    window.location.href = "../pages/login.html";
-  } else {
+  console.log(validateLogin === 'true')
+  if (validateLogin === 'true') {
+    const nomeOperador = document.getElementById("nav-name-profile");
     nomeOperador.innerHTML = user.nome;
+    getInfoProject()
+  } else {
+    window.location.href = "../pages/login.html";
   }
 }
 
 //Executar o carregamento das informações do usuario.
 getInfoUser();
-getInfoProject();
+loginValidate()
+//getInfoProject();

@@ -1,6 +1,7 @@
 const apiProject = {};
 apiProject.url = `http://localhost:8080/`;
 
+//carregar os projetos.
 apiProject.getInfoProject = async (idUser) => {
   const urlProject = apiProject.url + `project/${idUser}`;
   async function getProjectUser() {
@@ -15,9 +16,9 @@ apiProject.getInfoProject = async (idUser) => {
   return await getProjectUser();
 };
 
+//criar projeto
 apiProject.postProject = async (userID, titleProject, descriptProject) => {
   const urlProject = apiProject.url + `project`;
-  const currentDate = new Date();
 
   async function postProjectUser(userID, titleProject, descriptProject) {
     try {
@@ -31,9 +32,10 @@ apiProject.postProject = async (userID, titleProject, descriptProject) => {
           userID: userID,
           titulo: titleProject,
           descricao: descriptProject,
-          date: currentDate.getDate(),
+          date: "1999-01-01T16:29:35.892Z",
         }),
       });
+      //console.log(response.body())
       const projectAPI = await response.json();
       return projectAPI;
     } catch (error) {
@@ -43,6 +45,7 @@ apiProject.postProject = async (userID, titleProject, descriptProject) => {
   return await postProjectUser(userID, titleProject, descriptProject);
 };
 
+//apagar projeto
 apiProject.deleteProject = async (idProject) => {
   const urlProject = apiProject.url + `project/${idProject}`;
   async function deleteProjectUser() {
@@ -59,6 +62,7 @@ apiProject.deleteProject = async (idProject) => {
   return await deleteProjectUser();
 };
 
+//atualizar projeto
 apiProject.putProject = async (
   idProject,
   userId,
